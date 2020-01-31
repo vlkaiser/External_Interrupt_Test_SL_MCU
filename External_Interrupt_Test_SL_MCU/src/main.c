@@ -42,10 +42,11 @@ int main (void)
 	while(1)
 	{
 
-		if(port_pin_get_input_level(BUTTON_0_PIN) == true)
+		if( port_pin_get_input_level(BUTTON_0_PIN) == SW0_ACTIVE )
 		{
 
-			port_pin_set_output_level(LED0, LED0_ACTIVE);
+			port_pin_toggle_output_level(LED0);
+			delay_ms(100);
 		}
 		else
 		{

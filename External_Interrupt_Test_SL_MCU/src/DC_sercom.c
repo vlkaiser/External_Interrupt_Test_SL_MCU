@@ -83,17 +83,8 @@ void i2c_read_request_callback(	struct i2c_slave_module *const module)
 
 	/* Write buffer to master */
 	i2c_slave_write_packet_job(module, &rw_packet);
-	/*
-	while( i2c_slave_write_packet_wait(module, &rw_packet) )
-	{
-			// Increment timeout counter and check if timed out. 
-			if (timeout++ == I2C_TIMEOUT) {
-				return -1;
-				break;
-			}
-	}
-	*/
-	LED_Toggle(LED0);
+
+	//LED_Toggle(LED0);
 }
 
 /**********************************************************************
@@ -113,20 +104,14 @@ void i2c_write_request_callback(struct i2c_slave_module *const module)
 	rw_packet.data        = read_buffer;
 
 
-	
 	/* Read buffer from master */
-	i2c_slave_read_packet_job(module, &rw_packet);
-	/*
-	while( i2c_slave_read_packet_wait(module, &rw_packet) != STATUS_OK )
-		{
-			// Increment timeout counter and check if timed out. 
-			if (timeout++ == I2C_TIMEOUT) {
-				return -1;
-				break;
-			}
-		}
-		*/
-	LED_Toggle(LED0);
+	//i2c_slave_read_packet_job(module, &rw_packet);
+
+	if (i2c_slave_read_packet_job(module, &rw_packet) != STATUS_OK)
+	{
+	}
+
+	//LED_Toggle(LED0);
 }
 
  /******************************************************************************************************

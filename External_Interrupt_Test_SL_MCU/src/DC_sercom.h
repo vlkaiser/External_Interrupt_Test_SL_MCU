@@ -31,8 +31,12 @@ struct i2c_slave_config config_i2c_slave;
 struct i2c_slave_packet rw_packet;
 
 //! [packet_data]
+/*
 #define DATA_LENGTH 10
 static uint8_t write_buffer[DATA_LENGTH] = { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0xAA, 0xAB, 0xAC, 0xAD };
+*/
+#define DATA_LENGTH 5
+static uint8_t write_buffer[DATA_LENGTH] = { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E };
 static uint8_t read_buffer [DATA_LENGTH];
 
 /******************* Prototypes *******************/

@@ -30,5 +30,4 @@
 
 
 
-
 #endif /* DC_TYPEDEFS_H_ */

@@ -1,33 +1,38 @@
-/**
- * \file
+ /******************************************************************************************************
+ * @fn					- 
+ * @brief				- 
+ * @param[in]			- void
+ * @return				- void
  *
- * \brief Empty user application template
- *
- */
+ * @note				- 
+ ******************************************************************************************************/
 
-/**
- * \mainpage User Application template doxygen documentation
- *
- * \par Empty user application template
- *
- * Bare minimum empty user application template
- *
- * \par Content
- *
- * -# Include the ASF header files (through asf.h)
- * -# Minimal main function that starts with a call to system_init()
- * -# "Insert application code here" comment
- *
- */
-
-/*
- * Include header files for all drivers that have been imported from
- * Atmel Software Framework (ASF).
- */
-/*
- * Support and FAQ: visit <a href="https://www.microchip.com/support/">Microchip Support</a>
- */
-#include <asf.h>
+/***************************************************************************************************************************
+* Project							: SAMD20 Xplained I2C Master
+* Program Name						:
+* Author							: vkaiser
+* Date Created						: Jan 31 2020
+*
+* Purpose							: Develop I2C SL on userboard (I2c Callback ASF)
+*
+*
+* MCU								: ATSAMD20J18
+* Language							: C
+* Hardware Modifications			: N/A
+* Debugger							: EDBG (On-board)
+*
+* Repo / Revision History			: https://github.com/vlkaiser/
+*
+* - Special Setup -
+*  Header files for all drivers that have been imported from Atmel Software Framework (ASF).
+*  Use in conjunction with			: SAMD20 Xplained Pro
+*  Wiring Details					: PA08, PA09
+* Revision History					:
+* 	Date				Author			Notes
+* 						vkaiser			- Initial commit
+*
+***************************************************************************************************************************/
+#include <main.h>
 
 int main (void)
 {

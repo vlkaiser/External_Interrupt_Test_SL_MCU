@@ -39,4 +39,9 @@ int main (void)
 	system_init();
 
 	/* Insert application code here, after the board has been initialized. */
+	while(1)
+	{
+		port_pin_toggle_output_level(LED0);
+		delay_ms(100);
+	}
 }

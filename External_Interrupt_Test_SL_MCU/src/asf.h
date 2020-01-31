@@ -59,11 +59,17 @@
 // From module: Common build items for user board support templates
 #include <user_board.h>
 
+// From module: Delay routines
+#include <delay.h>
+
 // From module: Generic board support
 #include <board.h>
 
 // From module: Interrupt management - SAM implementation
 #include <interrupt.h>
+
+// From module: PORT - GPIO Pin Control
+#include <port.h>
 
 // From module: Part identification macros
 #include <parts.h>

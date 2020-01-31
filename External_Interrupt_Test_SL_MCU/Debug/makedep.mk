@@ -2,6 +2,10 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\common2\services\delay\sam0\systick_counter.c
+
+src\ASF\sam0\drivers\port\port.c
+
 src\ASF\common2\boards\user_board\init.c
 
 src\ASF\common\utils\interrupt\interrupt_sam_nvic.c

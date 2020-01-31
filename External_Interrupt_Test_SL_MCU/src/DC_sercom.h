@@ -12,51 +12,19 @@
 #include "main.h"
 
 
- /*
-  * Global Variables
-  */
-#define MAX_RX_BUFFER_LENGTH	5
-#define I2C_SLAVE_ADDRESS		0x18
-#define I2C_DATA_LENGTH			10
-#define I2C_TIMEOUT				10
 
-#define CONF_I2C_SLAVE_MODULE   SERCOM2		//SERCOM port
-//#define SLAVE_ADDRESS 0x12
-#define SLAVE_ADDRESS			0x1A		//Address of the slave
-
-__vo uint8_t rx_buffer[MAX_RX_BUFFER_LENGTH];
-
-struct i2c_slave_module i2c_slave_instance;
-struct i2c_slave_config config_i2c_slave;
-struct i2c_slave_packet rw_packet;
-
-
-/*
-#define DATA_LENGTH 10
-static uint8_t write_buffer[DATA_LENGTH] = { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0xAA, 0xAB, 0xAC, 0xAD };
-*/
-#define DATA_LENGTH 5
-static uint8_t write_buffer[DATA_LENGTH] = { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E };
-static uint8_t read_buffer [DATA_LENGTH];
-
-struct cmd_response
-{
-	uint8_t cmda;
-	uint8_t cmdb;
-	uint8_t cmdc;
-	uint8_t cmdd;
-	uint8_t cmde;
-};
-struct cmd_response cmd_resp;
 
 /******************* Prototypes *******************/
 
 void configure_i2c_slave(void);
 void configure_i2c_slave_callbacks(void);
 void i2c_write_complete_callback(struct i2c_slave_module *const module);
+void i2c_read_complete_callback(struct i2c_slave_module *const module);
 void i2c_read_request_callback(	struct i2c_slave_module *const module);
 void i2c_write_request_callback( struct i2c_slave_module *const module);
 
 void sys_config(void);
+
+//void setFlag(void);
 
 #endif /* DC_SERCOM_H_ */

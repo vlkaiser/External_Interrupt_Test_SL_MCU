@@ -6,9 +6,55 @@
  */ 
 #include "DC_sercom.h"
 
+ /*
+  * Global Variables
+  */
+#define MAX_RX_BUFFER_LENGTH	5
+#define I2C_SLAVE_ADDRESS		0x18
+#define I2C_DATA_LENGTH			10
+#define I2C_TIMEOUT				10
+
+#define CONF_I2C_SLAVE_MODULE   SERCOM2		//SERCOM port
+//#define SLAVE_ADDRESS 0x12
+#define SLAVE_ADDRESS			0x1A		//Address of the slave
+
+__vo uint8_t rx_buffer[MAX_RX_BUFFER_LENGTH];
+
+struct i2c_slave_module i2c_slave_instance;
+struct i2c_slave_config config_i2c_slave;
+struct i2c_slave_packet rw_packet;
+//struct i2c_slave_packet *rw_packet;	//test
+
+/*
+#define DATA_LENGTH 10
+static uint8_t write_buffer[DATA_LENGTH] = { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0xAA, 0xAB, 0xAC, 0xAD };
+*/
+#define DATA_LENGTH 5
+static uint8_t write_buffer[DATA_LENGTH] = { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E };
+static uint8_t read_buffer [DATA_LENGTH];
+
+struct cmd_issued
+{
+	uint8_t cmd1;
+	uint8_t cmd2;
+	uint8_t cmd3;
+	uint8_t cmd4;
+	uint8_t cmd5;
+};
+struct cmd_issued cmd_sent;
+
+struct cmd_response
+{
+	uint8_t cmda;
+	uint8_t cmdb;
+	uint8_t cmdc;
+	uint8_t cmdd;
+	uint8_t cmde;
+};
+struct cmd_response cmd_resp;
+
  /* Timeout counter. */
  uint16_t timeout = 0;
-
 
 /******************************************************************************************************
  * @fn					- SysTick_Handler
@@ -64,6 +110,58 @@ void configure_i2c_slave_callbacks(void)
 
 	i2c_slave_register_callback(&i2c_slave_instance, i2c_write_request_callback, I2C_SLAVE_CALLBACK_WRITE_REQUEST);
 	i2c_slave_enable_callback(&i2c_slave_instance, I2C_SLAVE_CALLBACK_WRITE_REQUEST);
+
+	i2c_slave_register_callback(&i2c_slave_instance, i2c_write_complete_callback, I2C_SLAVE_CALLBACK_WRITE_COMPLETE);
+	i2c_slave_enable_callback(&i2c_slave_instance, I2C_SLAVE_CALLBACK_WRITE_COMPLETE);
+
+	i2c_slave_register_callback(&i2c_slave_instance, i2c_read_complete_callback, I2C_SLAVE_CALLBACK_READ_COMPLETE);
+	i2c_slave_enable_callback(&i2c_slave_instance, I2C_SLAVE_CALLBACK_READ_COMPLETE);
+}
+
+
+/**********************************************************************
+ * @fn					- i2c_write_complete_callback
+ * @brief				- i2c SLAVE write complete triggers this callback
+ *
+ * @param[in]			- struct i2c_slave_module
+ * @param[in]			- *const module
+ * @return				- void
+ *
+ * @note				- MASTER: i2c_read, SLAVE: write-to-buf Complete
+ **********************************************************************/
+void i2c_write_complete_callback(struct i2c_slave_module *const module)
+{
+	LED_Toggle(LED0);
+		
+}
+
+/**********************************************************************
+ * @fn					- i2c_read_complete_callback
+ * @brief				- i2c SLAVE read complete triggers this callback
+ *
+ * @param[in]			- struct i2c_slave_module
+ * @param[in]			- *const module
+ * @return				- void
+ *
+ * @note				- MASTER: i2c_write, SLAVE: read-into-buf Complete
+ **********************************************************************/
+void i2c_read_complete_callback(struct i2c_slave_module *const module)
+{
+	LED_Toggle(LED0);
+	//if (rw_packet.data == SLAVE_ADDRESS)
+	/*
+	if (rw_packet.data == SLAVE_ADDRESS)
+	{
+	}
+	else
+	{
+		//Eliminate if Read is 
+		if (cmd_resp.cmda == 0xA1)
+		{
+			LED_Toggle(LED0);
+		}
+	}
+	*/
 }
 
 /**********************************************************************
@@ -91,7 +189,6 @@ void i2c_read_request_callback(	struct i2c_slave_module *const module)
 	//LED_Toggle(LED0);
 }
 
-
 /**********************************************************************
  * @fn					- i2c_write_request_callback
  * @brief				- i2c master write request triggers this callback
@@ -105,8 +202,10 @@ void i2c_read_request_callback(	struct i2c_slave_module *const module)
 void i2c_write_request_callback(struct i2c_slave_module *const module)
 {
 	/* Init i2c packet */
-	rw_packet.data_length = DATA_LENGTH;
-	rw_packet.data        = read_buffer;
+	//rw_packet.data_length = DATA_LENGTH;
+	//rw_packet.data        = read_buffer;
+	rw_packet.data_length = sizeof(cmd_sent);
+	rw_packet.data = (uint8_t *)&cmd_sent;
 
 
 	/* Read buffer from master */
@@ -115,9 +214,8 @@ void i2c_write_request_callback(struct i2c_slave_module *const module)
 	if (i2c_slave_read_packet_job(module, &rw_packet) != STATUS_OK)
 	{
 	}
-
-	//LED_Toggle(LED0);
 }
+
 
  /******************************************************************************************************
  * @fn					- sys_config

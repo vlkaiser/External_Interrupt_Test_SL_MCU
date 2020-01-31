@@ -9,6 +9,7 @@
  /* Timeout counter. */
  uint16_t timeout = 0;
 
+
 /******************************************************************************************************
  * @fn					- SysTick_Handler
  * @brief				- SysTick handler interrupt override
@@ -78,14 +79,18 @@ void configure_i2c_slave_callbacks(void)
 void i2c_read_request_callback(	struct i2c_slave_module *const module)
 {
 	/* Init i2c packet */
-	rw_packet.data_length = DATA_LENGTH;
-	rw_packet.data        = write_buffer;
+	//rw_packet.data_length = DATA_LENGTH;
+	//rw_packet.data        = write_buffer;
+
+	rw_packet.data_length = sizeof(cmd_resp);
+	rw_packet.data = (uint8_t *)&cmd_resp;
 
 	/* Write buffer to master */
 	i2c_slave_write_packet_job(module, &rw_packet);
-
+	
 	//LED_Toggle(LED0);
 }
+
 
 /**********************************************************************
  * @fn					- i2c_write_request_callback
@@ -128,4 +133,10 @@ void sys_config(void)
 
 	configure_i2c_slave();
 	configure_i2c_slave_callbacks();
+
+		cmd_resp.cmda = 0xA1;
+		cmd_resp.cmdb = 0xA2;
+		cmd_resp.cmdc = 0xA3;
+		cmd_resp.cmdd = 0xA4;
+		cmd_resp.cmde = 0xA5;
 }

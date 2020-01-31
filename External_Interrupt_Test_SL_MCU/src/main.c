@@ -27,7 +27,7 @@
 *  Header files for all drivers that have been imported from Atmel Software Framework (ASF).
 *  Use in conjunction with			: SAMD20 Xplained Pro
 *  Wiring Details					: PA08, PA09
-* Revision History					:
+*  Revision History					:
 * 	Date				Author			Notes
 * 						vkaiser			- Initial commit
 *

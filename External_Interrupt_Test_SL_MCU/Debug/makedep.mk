@@ -6,6 +6,8 @@ src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_slave.c
 
 src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_slave_interrupt.c
 
+src\DC_sercom.c
+
 src\ASF\sam0\drivers\sercom\sercom.c
 
 src\ASF\sam0\drivers\sercom\sercom_interrupt.c

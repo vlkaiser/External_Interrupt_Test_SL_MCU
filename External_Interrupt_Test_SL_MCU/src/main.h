@@ -13,7 +13,7 @@
 #include "user_board.h"
 #include "DC_TypeDefs.h"
 //#include "DC_peripherals.h"
-//#include "DC_sercom.h"
+#include "DC_sercom.h"
 #include "stdio.h"
 #include "string.h"
 

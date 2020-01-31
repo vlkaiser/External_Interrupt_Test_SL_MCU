@@ -37,6 +37,7 @@
 int main (void)
 {
 	system_init();
+	sys_config();
 
 	/* Insert application code here, after the board has been initialized. */
 	while(1)

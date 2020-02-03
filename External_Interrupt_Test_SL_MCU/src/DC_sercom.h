@@ -11,7 +11,39 @@
 
 #include "main.h"
 
+struct cmd_issued
+{
+	uint8_t cmdID;
+	uint32_t encLocMoveTo;
+};
+struct cmd_issued cmd_sent;
 
+	struct cmd_response
+	{
+	uint8_t lastCmdRxd;
+	uint8_t lastCmdStatus;
+	uint8_t ID;
+	uint8_t config;
+	uint8_t status;
+	uint8_t motorStatus;
+	uint16_t encoderLoc;
+	/*
+	uint32_t voltage5V;
+	uint32_t current5V;
+	uint32_t peakCurrent5V;
+	uint32_t voltage24V;
+	uint32_t current24V;
+	uint32_t peakCurrent24V;
+	uint32_t voltage400V;		//future
+	uint32_t current400V;		//future
+	uint32_t peakCurrent400V;	//future
+
+	uint32_t pcbTemp;
+	*/
+	};
+
+struct cmd_response cmd_resp;
+struct cmd_response cmd_resp_copy;
 
 
 /******************* Prototypes *******************/

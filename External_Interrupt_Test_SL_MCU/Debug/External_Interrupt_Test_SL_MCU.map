@@ -18,9 +18,9 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../l
 Allocating common symbols
 Common symbol       size              file
 
-cmd_resp            0x8               src/DC_sercom.o
+cmd_resp            0xc               src/DC_sercom.o
 _sercom_instances   0x18              src/ASF/sam0/drivers/sercom/sercom_interrupt.o
-cmd_resp_copy       0x8               src/DC_sercom.o
+cmd_resp_copy       0xc               src/DC_sercom.o
 rw_packet           0x8               src/DC_sercom.o
 cmd_sent            0x8               src/DC_sercom.o
 config_i2c_slave    0x20              src/DC_sercom.o
@@ -3858,7 +3858,7 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
  *fill*         0x20000009        0x3 
                 0x2000000c                _erelocate = .
 
-.bss            0x2000000c       0xe0 load address 0x000013a4
+.bss            0x2000000c       0xe8 load address 0x000013a4
                 0x2000000c                . = ALIGN (0x4)
                 0x2000000c                _sbss = .
                 0x2000000c                _szero = .
@@ -3879,29 +3879,29 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
  .bss._system_clock_inst
                 0x2000004c       0x14 src/ASF/sam0/drivers/system/clock/clock_samd20/clock.o
  *(COMMON)
- COMMON         0x20000060       0x74 src/DC_sercom.o
+ COMMON         0x20000060       0x7c src/DC_sercom.o
                 0x20000060                cmd_resp
-                0x20000068                cmd_resp_copy
-                0x20000070                rw_packet
-                0x20000078                cmd_sent
-                0x20000080                config_i2c_slave
-                0x200000a0                i2c_slave_instance
- COMMON         0x200000d4       0x18 src/ASF/sam0/drivers/sercom/sercom_interrupt.o
-                0x200000d4                _sercom_instances
-                0x200000ec                . = ALIGN (0x4)
-                0x200000ec                _ebss = .
-                0x200000ec                _ezero = .
+                0x2000006c                cmd_resp_copy
+                0x20000078                rw_packet
+                0x20000080                cmd_sent
+                0x20000088                config_i2c_slave
+                0x200000a8                i2c_slave_instance
+ COMMON         0x200000dc       0x18 src/ASF/sam0/drivers/sercom/sercom_interrupt.o
+                0x200000dc                _sercom_instances
+                0x200000f4                . = ALIGN (0x4)
+                0x200000f4                _ebss = .
+                0x200000f4                _ezero = .
 
-.stack          0x200000ec     0x2004 load address 0x00001484
-                0x200000f0                . = ALIGN (0x8)
- *fill*         0x200000ec        0x4 
-                0x200000f0                _sstack = .
-                0x200020f0                . = (. + STACK_SIZE)
- *fill*         0x200000f0     0x2000 
-                0x200020f0                . = ALIGN (0x8)
-                0x200020f0                _estack = .
-                0x200020f0                . = ALIGN (0x4)
-                0x200020f0                _end = .
+.stack          0x200000f4     0x2004 load address 0x0000148c
+                0x200000f8                . = ALIGN (0x8)
+ *fill*         0x200000f4        0x4 
+                0x200000f8                _sstack = .
+                0x200020f8                . = (. + STACK_SIZE)
+ *fill*         0x200000f8     0x2000 
+                0x200020f8                . = ALIGN (0x8)
+                0x200020f8                _estack = .
+                0x200020f8                . = ALIGN (0x4)
+                0x200020f8                _end = .
 OUTPUT(External_Interrupt_Test_SL_MCU.elf elf32-littlearm)
 
 .ARM.attributes
@@ -3967,7 +3967,7 @@ OUTPUT(External_Interrupt_Test_SL_MCU.elf elf32-littlearm)
  .comment       0x00000059       0x5a src/ASF/sam0/utils/cmsis/samd20/source/gcc/startup_samd20.o
  .comment       0x00000059       0x5a src/main.o
 
-.debug_info     0x00000000    0x1c8ff
+.debug_info     0x00000000    0x1c8e9
  .debug_info    0x00000000     0x464e src/ASF/sam0/drivers/sercom/i2c/i2c_samd20/i2c_slave.o
  .debug_info    0x0000464e     0x2a06 src/ASF/sam0/drivers/sercom/i2c/i2c_samd20/i2c_slave_interrupt.o
  .debug_info    0x00007054     0x35e7 src/DC_sercom.o
@@ -3982,7 +3982,7 @@ OUTPUT(External_Interrupt_Test_SL_MCU.elf elf32-littlearm)
  .debug_info    0x00018c4f     0x1374 src/ASF/sam0/drivers/system/pinmux/pinmux.o
  .debug_info    0x00019fc3      0xa73 src/ASF/sam0/drivers/system/system.o
  .debug_info    0x0001aa36      0x9c9 src/ASF/sam0/utils/cmsis/samd20/source/gcc/startup_samd20.o
- .debug_info    0x0001b3ff     0x1500 src/main.o
+ .debug_info    0x0001b3ff     0x14ea src/main.o
 
 .debug_abbrev   0x00000000     0x2ff9
  .debug_abbrev  0x00000000      0x500 src/ASF/sam0/drivers/sercom/i2c/i2c_samd20/i2c_slave.o
@@ -4240,7 +4240,7 @@ OUTPUT(External_Interrupt_Test_SL_MCU.elf elf32-littlearm)
  .debug_str     0x0005f0ae      0x362 src/ASF/sam0/utils/cmsis/samd20/source/gcc/startup_samd20.o
                               0x4332f (size before relaxing)
  .debug_str     0x0005f410       0x27 src/main.o
-                              0x5a942 (size before relaxing)
+                              0x5a92e (size before relaxing)
 
 .debug_frame    0x00000000      0x924
  .debug_frame   0x00000000      0x120 src/ASF/sam0/drivers/sercom/i2c/i2c_samd20/i2c_slave.o

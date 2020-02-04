@@ -7,37 +7,37 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   1 .relocate     0000000c  20000000  00001398  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          000000e0  2000000c  000013a4  0002000c  2**2
+  2 .bss          000000e8  2000000c  000013a4  0002000c  2**2
                   ALLOC
-  3 .stack        00002004  200000ec  00001484  0002000c  2**0
+  3 .stack        00002004  200000f4  0000148c  0002000c  2**0
                   ALLOC
   4 .ARM.attributes 00000028  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
   5 .comment      00000059  00000000  00000000  00020034  2**0
                   CONTENTS, READONLY
-  6 .debug_info   0001c8ff  00000000  00000000  0002008d  2**0
+  6 .debug_info   0001c8e9  00000000  00000000  0002008d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00002ff9  00000000  00000000  0003c98c  2**0
+  7 .debug_abbrev 00002ff9  00000000  00000000  0003c976  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_loc    000037fd  00000000  00000000  0003f985  2**0
+  8 .debug_loc    000037fd  00000000  00000000  0003f96f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_aranges 000003f8  00000000  00000000  00043182  2**0
+  9 .debug_aranges 000003f8  00000000  00000000  0004316c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 000003b0  00000000  00000000  0004357a  2**0
+ 10 .debug_ranges 000003b0  00000000  00000000  00043564  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_macro  00012c52  00000000  00000000  0004392a  2**0
+ 11 .debug_macro  00012c52  00000000  00000000  00043914  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_line   0000a0a0  00000000  00000000  0005657c  2**0
+ 12 .debug_line   0000a0a0  00000000  00000000  00056566  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_str    0005f437  00000000  00000000  0006061c  2**0
+ 13 .debug_str    0005f437  00000000  00000000  00060606  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_frame  00000924  00000000  00000000  000bfa54  2**2
+ 14 .debug_frame  00000924  00000000  00000000  000bfa40  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <exception_table>:
-       0:	f0 20 00 20 ed 10 00 00 e9 10 00 00 e9 10 00 00     . . ............
+       0:	f8 20 00 20 ed 10 00 00 e9 10 00 00 e9 10 00 00     . . ............
 	...
       2c:	e9 10 00 00 00 00 00 00 00 00 00 00 e9 10 00 00     ................
       3c:	ad 05 00 00 e9 10 00 00 e9 10 00 00 e9 10 00 00     ................
@@ -357,7 +357,7 @@ static inline bool system_is_debugger_present(void)
      248:	00000709 	.word	0x00000709
      24c:	000002d1 	.word	0x000002d1
      250:	00000909 	.word	0x00000909
-     254:	200000d4 	.word	0x200000d4
+     254:	200000dc 	.word	0x200000dc
      258:	00001089 	.word	0x00001089
      25c:	41002000 	.word	0x41002000
      260:	00000755 	.word	0x00000755
@@ -969,7 +969,7 @@ void _i2c_slave_interrupt_handler(
      53a:	8523      	strh	r3, [r4, #40]	; 0x28
      53c:	e73d      	b.n	3ba <_i2c_slave_interrupt_handler+0xea>
      53e:	46c0      	nop			; (mov r8, r8)
-     540:	200000d4 	.word	0x200000d4
+     540:	200000dc 	.word	0x200000dc
      544:	00000b09 	.word	0x00000b09
      548:	00000b49 	.word	0x00000b49
 
@@ -1023,7 +1023,7 @@ void i2c_read_request_callback(	struct i2c_slave_module *const module)
 
 	rw_packet.data_length = sizeof(cmd_resp);
      56e:	4904      	ldr	r1, [pc, #16]	; (580 <i2c_read_request_callback+0x14>)
-     570:	2308      	movs	r3, #8
+     570:	230c      	movs	r3, #12
      572:	800b      	strh	r3, [r1, #0]
 	//rw_packet.data_length = 10;
 	rw_packet.data = (uint8_t *)&cmd_resp;
@@ -1039,7 +1039,7 @@ void i2c_read_request_callback(	struct i2c_slave_module *const module)
 }
      57c:	bd10      	pop	{r4, pc}
      57e:	46c0      	nop			; (mov r8, r8)
-     580:	20000070 	.word	0x20000070
+     580:	20000078 	.word	0x20000078
      584:	20000060 	.word	0x20000060
      588:	000002a7 	.word	0x000002a7
 
@@ -1075,8 +1075,8 @@ void i2c_write_request_callback(struct i2c_slave_module *const module)
 }
      59c:	bd10      	pop	{r4, pc}
      59e:	46c0      	nop			; (mov r8, r8)
-     5a0:	20000070 	.word	0x20000070
-     5a4:	20000078 	.word	0x20000078
+     5a0:	20000078 	.word	0x20000078
+     5a4:	20000080 	.word	0x20000080
      5a8:	0000027f 	.word	0x0000027f
 
 000005ac <SysTick_Handler>:
@@ -1188,8 +1188,8 @@ static inline void system_interrupt_enable(
 }
      60c:	bd70      	pop	{r4, r5, r6, pc}
      60e:	46c0      	nop			; (mov r8, r8)
-     610:	20000080 	.word	0x20000080
-     614:	200000a0 	.word	0x200000a0
+     610:	20000088 	.word	0x20000088
+     614:	200000a8 	.word	0x200000a8
      618:	42001000 	.word	0x42001000
      61c:	00000105 	.word	0x00000105
      620:	00000945 	.word	0x00000945
@@ -1259,7 +1259,7 @@ static inline void system_interrupt_enable(
 }
      678:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
      67a:	46c0      	nop			; (mov r8, r8)
-     67c:	200000a0 	.word	0x200000a0
+     67c:	200000a8 	.word	0x200000a8
      680:	0000056d 	.word	0x0000056d
      684:	00000265 	.word	0x00000265
      688:	0000058d 	.word	0x0000058d
@@ -1319,26 +1319,26 @@ __STATIC_INLINE uint32_t SysTick_Config(uint32_t ticks)
 		cmd_resp.lastCmdRxd = 0x11;
      6c8:	4b0d      	ldr	r3, [pc, #52]	; (700 <sys_config+0x6c>)
      6ca:	2211      	movs	r2, #17
-     6cc:	701a      	strb	r2, [r3, #0]
+     6cc:	711a      	strb	r2, [r3, #4]
 		cmd_resp.lastCmdStatus = 0x22;
      6ce:	3211      	adds	r2, #17
-     6d0:	705a      	strb	r2, [r3, #1]
+     6d0:	715a      	strb	r2, [r3, #5]
 		cmd_resp.ID = 0x33;
      6d2:	3211      	adds	r2, #17
-     6d4:	709a      	strb	r2, [r3, #2]
+     6d4:	719a      	strb	r2, [r3, #6]
 		cmd_resp.config = 0x44;
      6d6:	3211      	adds	r2, #17
-     6d8:	70da      	strb	r2, [r3, #3]
+     6d8:	71da      	strb	r2, [r3, #7]
 		cmd_resp.status = 0x55;
      6da:	3211      	adds	r2, #17
-     6dc:	711a      	strb	r2, [r3, #4]
+     6dc:	721a      	strb	r2, [r3, #8]
 		cmd_resp.motorStatus = 0x66;
      6de:	3211      	adds	r2, #17
-     6e0:	715a      	strb	r2, [r3, #5]
-		//cmd_resp.encoderLoc= 0xAABBCCDD;
-		cmd_resp.encoderLoc= 0xAABB;
+     6e0:	725a      	strb	r2, [r3, #9]
+		cmd_resp.encoderLoc= 0xAABBCCDD;
      6e2:	4a08      	ldr	r2, [pc, #32]	; (704 <sys_config+0x70>)
-     6e4:	80da      	strh	r2, [r3, #6]
+     6e4:	601a      	str	r2, [r3, #0]
+		//cmd_resp.encoderLoc= 0xAABB;
 
      6e6:	bd10      	pop	{r4, pc}
      6e8:	00000e79 	.word	0x00000e79
@@ -1348,7 +1348,7 @@ __STATIC_INLINE uint32_t SysTick_Config(uint32_t ticks)
      6f8:	000005b1 	.word	0x000005b1
      6fc:	00000629 	.word	0x00000629
      700:	20000060 	.word	0x20000060
-     704:	ffffaabb 	.word	0xffffaabb
+     704:	aabbccdd 	.word	0xaabbccdd
 
 00000708 <sercom_set_gclk_generator>:
  *                                         forced.
@@ -1712,7 +1712,7 @@ void _sercom_set_handler(
      934:	2000002a 	.word	0x2000002a
      938:	2000002c 	.word	0x2000002c
      93c:	00000905 	.word	0x00000905
-     940:	200000d4 	.word	0x200000d4
+     940:	200000dc 	.word	0x200000dc
 
 00000944 <_sercom_get_interrupt_vector>:
  * \retval SYSTEM_INTERRUPT_MODULE_SERCOM6
@@ -3441,7 +3441,7 @@ void Dummy_Handler(void)
     1160:	2000000c 	.word	0x2000000c
     1164:	20000004 	.word	0x20000004
     1168:	2000000c 	.word	0x2000000c
-    116c:	200000ec 	.word	0x200000ec
+    116c:	200000f4 	.word	0x200000f4
     1170:	e000ed00 	.word	0xe000ed00
     1174:	00000000 	.word	0x00000000
     1178:	41004000 	.word	0x41004000

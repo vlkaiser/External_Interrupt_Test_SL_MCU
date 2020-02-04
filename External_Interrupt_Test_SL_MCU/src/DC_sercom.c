@@ -207,7 +207,7 @@ void sys_config(void)
 		cmd_resp.config = 0x44;
 		cmd_resp.status = 0x55;
 		cmd_resp.motorStatus = 0x66;
-		//cmd_resp.encoderLoc= 0xAABBCCDD;
-		cmd_resp.encoderLoc= 0xAABB;
+		cmd_resp.encoderLoc= 0xAABBCCDD;
+		//cmd_resp.encoderLoc= 0xAABB;
 
 }

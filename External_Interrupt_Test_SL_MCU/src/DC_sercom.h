@@ -13,20 +13,23 @@
 
 struct cmd_issued
 {
-	uint8_t cmdID;
 	uint32_t encLocMoveTo;
+	uint8_t cmdID;
+	
 };
 struct cmd_issued cmd_sent;
 
 	struct cmd_response
 	{
+	uint32_t encoderLoc;
+
 	uint8_t lastCmdRxd;
 	uint8_t lastCmdStatus;
 	uint8_t ID;
 	uint8_t config;
 	uint8_t status;
 	uint8_t motorStatus;
-	uint16_t encoderLoc;
+	
 	/*
 	uint32_t voltage5V;
 	uint32_t current5V;

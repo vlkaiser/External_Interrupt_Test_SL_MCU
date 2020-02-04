@@ -50,14 +50,13 @@ void system_board_init(void);
 	/** @} */
 
 	/** Number of on-board Buttons */
-	//IO Panel Stop, Measure, Power
-	#define BUTTON_COUNT 3
+	//Are there any?
+	#define BUTTON_COUNT 1
 
 
 	/** Number of on-board LEDs */
-	//IO Panel Stop, Measure, Power
 	//Status LED GN/OR
-	#define LED_COUNT                 4
+	#define LED_COUNT                 1
 	#define LED0 LED0_PIN
 
 #endif
@@ -93,6 +92,23 @@ void system_board_init(void);
 	#define SW0_EIC_LINE              15
 	/** @} */
 
+	/**
+	 * \name Button #0 definitions
+	 *
+	 * Wrapper macros for SW0, to ensure common naming across all Xplained Pro
+	 * boards.
+	 *
+	 *  @{ */
+	#define BUTTON_0_NAME             "SW0"
+	#define BUTTON_0_PIN              SW0_PIN
+	#define BUTTON_0_ACTIVE           SW0_ACTIVE
+	#define BUTTON_0_INACTIVE         SW0_INACTIVE
+	#define BUTTON_0_EIC_PIN          SW0_EIC_PIN
+	#define BUTTON_0_EIC_MUX          SW0_EIC_MUX
+	#define BUTTON_0_EIC_PINMUX       SW0_EIC_PINMUX
+	#define BUTTON_0_EIC_LINE         SW0_EIC_LINE
+	/** @} */
+
 	/** Number of on-board buttons */
 	#define BUTTON_COUNT 1
 
@@ -110,25 +126,6 @@ void system_board_init(void);
 #define LED_0_ACTIVE              LED0_ACTIVE
 #define LED_0_INACTIVE            LED0_INACTIVE
 #define LED0_GPIO 				  LED0_PIN
-/** @} */
-
-
-
-/**
- * \name Button #0 definitions
- *
- * Wrapper macros for SW0, to ensure common naming across all Xplained Pro
- * boards.
- *
- *  @{ */
-#define BUTTON_0_NAME             "SW0"
-#define BUTTON_0_PIN              SW0_PIN
-#define BUTTON_0_ACTIVE           SW0_ACTIVE
-#define BUTTON_0_INACTIVE         SW0_INACTIVE
-#define BUTTON_0_EIC_PIN          SW0_EIC_PIN
-#define BUTTON_0_EIC_MUX          SW0_EIC_MUX
-#define BUTTON_0_EIC_PINMUX       SW0_EIC_PINMUX
-#define BUTTON_0_EIC_LINE         SW0_EIC_LINE
 /** @} */
 
 

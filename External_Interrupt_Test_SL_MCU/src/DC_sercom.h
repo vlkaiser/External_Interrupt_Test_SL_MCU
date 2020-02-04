@@ -11,13 +11,14 @@
 
 #include "main.h"
 
-struct cmd_issued
-{
-	uint32_t encLocMoveTo;
-	uint8_t cmdID;
+/* the Data Packing of these structs mean that uint32s should come before uint8s or bytes could be lost */
+	struct cmd_issued
+	{
+		uint32_t encLocMoveTo;
+		uint8_t cmdID;
 	
-};
-struct cmd_issued cmd_sent;
+	};
+	struct cmd_issued cmd_sent;
 
 	struct cmd_response
 	{

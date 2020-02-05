@@ -148,7 +148,6 @@ void i2c_read_request_callback(	struct i2c_slave_module *const module)
 	//rw_packet.data        = write_buffer;
 
 	rw_packet.data_length = sizeof(cmd_resp);
-	//rw_packet.data_length = 10;
 	rw_packet.data = (uint8_t *)&cmd_resp;
 
 	/* Write buffer to master */
@@ -173,13 +172,10 @@ void i2c_write_request_callback(struct i2c_slave_module *const module)
 	//rw_packet.data_length = DATA_LENGTH;
 	//rw_packet.data        = read_buffer;
 	rw_packet.data_length = sizeof(cmd_sent);
-	//rw_packet.data_length = 10
 	rw_packet.data = (uint8_t *)&cmd_sent;
 
 
 	/* Read buffer from master */
-	//i2c_slave_read_packet_job(module, &rw_packet);
-
 	if (i2c_slave_read_packet_job(module, &rw_packet) != STATUS_OK)
 	{
 	}
@@ -208,6 +204,5 @@ void sys_config(void)
 		cmd_resp.status = 0x55;
 		cmd_resp.motorStatus = 0x66;
 		cmd_resp.encoderLoc= 0xAABBCCDD;
-		//cmd_resp.encoderLoc= 0xAABB;
 
 }

@@ -16,6 +16,6 @@
 #include "DC_sercom.h"
 #include "stdio.h"
 #include "string.h"
-
+#include "DC_Motors.h"
 
 #endif /* MAIN_H_ */

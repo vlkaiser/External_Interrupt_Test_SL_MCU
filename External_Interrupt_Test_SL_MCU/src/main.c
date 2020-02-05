@@ -38,20 +38,28 @@ int main (void)
 {
 	system_init();
 	sys_config();
-
-	/* Insert application code here, after the board has been initialized. */
+	configMotors();
+	
 	while(1)
 	{
 
-		if( port_pin_get_input_level(BUTTON_0_PIN) == SW0_ACTIVE )
+		//if( port_pin_get_input_level(BUTTON_0_PIN) == SW0_ACTIVE )
+		if( port_pin_get_input_level(PBTN) == HIGH )
 		{
-			port_pin_toggle_output_level(LED0);
-			delay_ms(100);
+			//port_pin_toggle_output_level(LED0);
+			port_pin_toggle_output_level(STATUSLED);
+			//delay_ms(100);
+			motorCCW(5);
 		}
 		else
 		{
-			port_pin_set_output_level(LED0, ~LED0_ACTIVE);
+			port_pin_set_output_level(STATUSLED, LOW);
+			port_pin_toggle_output_level(LED0);
+			delay_ms(100);
+			port_pin_set_output_level(DIR_PIN, LOW);
+			port_pin_set_output_level(PLS_PIN, LOW);
 		}
 		
 	}
+	
 }

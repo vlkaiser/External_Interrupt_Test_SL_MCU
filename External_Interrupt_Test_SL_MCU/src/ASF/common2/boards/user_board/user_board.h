@@ -112,6 +112,15 @@ void system_board_init(void);
 	/** Number of on-board buttons */
 	#define BUTTON_COUNT 1
 
+	/* Motor Defines - Test */
+	#define DIR_PIN						PIN_PB00
+	#define	PLS_PIN						PIN_PB01
+	#define	CHA_ENC						PIN_PB02
+	#define	CHB_ENC						PIN_PB03
+	#define PBTN						PIN_PA18
+	#define STATUSLED					PIN_PA19						
+
+
 #endif
 
 /**

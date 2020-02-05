@@ -576,6 +576,12 @@
     <Compile Include="src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_slave_interrupt.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\DC_Motors.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\DC_Motors.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\DC_sercom.c">
       <SubType>compile</SubType>
     </Compile>

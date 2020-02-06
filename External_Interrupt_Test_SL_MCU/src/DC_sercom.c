@@ -11,26 +11,24 @@
   */
 #define MAX_RX_BUFFER_LENGTH	256
 #define I2C_SLAVE_ADDRESS		0x18
-//#define I2C_DATA_LENGTH		10
 #define I2C_TIMEOUT				10
 
 #define CONF_I2C_SLAVE_MODULE   SERCOM2		//SERCOM port
 //#define SLAVE_ADDRESS 0x12
-//#define SLAVE_ADDRESS			0x1A		//Address of the slave
-
-//__vo uint8_t rx_buffer[MAX_RX_BUFFER_LENGTH];
 
 struct i2c_slave_module i2c_slave_instance;
 struct i2c_slave_config config_i2c_slave;
 struct i2c_slave_packet rw_packet;
 
 /*
+__vo uint8_t rx_buffer[MAX_RX_BUFFER_LENGTH];
 #define DATA_LENGTH 10
 static uint8_t write_buffer[DATA_LENGTH] = { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0xAA, 0xAB, 0xAC, 0xAD };
+
+#define DATA_LENGTH 5
+static uint8_t write_buffer[DATA_LENGTH] = { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E };
+static uint8_t read_buffer [DATA_LENGTH];
 */
-//#define DATA_LENGTH 5
-//static uint8_t write_buffer[DATA_LENGTH] = { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E };
-//static uint8_t read_buffer [DATA_LENGTH];
 
 
  /* Timeout counter. */

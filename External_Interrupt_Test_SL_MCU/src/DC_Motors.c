@@ -54,21 +54,17 @@
  ******************************************************************************************************/
  void motorCCW(int NumSpeed)
  {
+	//Rotates CW, slower.
+	 for(int i = 0; i < NumSpeed; i++)
+	 {
+		port_pin_set_output_level(DIR_PIN, LOW);
+		delay_ms(1);
+		port_pin_set_output_level(PLS_PIN, LOW);
+		delay_ms(10);
+		port_pin_set_output_level(PLS_PIN, HIGH);
+		delay_ms(5);
+		}
 
-	port_pin_set_output_level(DIR_PIN, LOW);
-	delay_ms(NumSpeed);
-	port_pin_set_output_level(PLS_PIN, LOW);
-	delay_ms(NumSpeed);
-	port_pin_set_output_level(PLS_PIN, HIGH);
-	delay_ms(NumSpeed+3);
-	/*
-	port_pin_set_output_level(DIR_PIN, LOW);
-	delay_ms(NumSpeed);
-	port_pin_set_output_level(PLS_PIN, HIGH);
-	delay_ms(NumSpeed);
-	port_pin_set_output_level(PLS_PIN, LOW);
-	delay_ms(NumSpeed);
-	*/
 
  }
 
@@ -85,11 +81,11 @@
 	for(int i = 0; i < NumSpeed; i++)
 	{
 		port_pin_set_output_level(DIR_PIN, HIGH);
-		delay_ms(10);
+		delay_ms(1);
 		port_pin_set_output_level(PLS_PIN, LOW);
 		delay_ms(10);
 		port_pin_set_output_level(PLS_PIN, HIGH);
-		delay_ms(10);
+		delay_ms(5);
 		}
 
  }

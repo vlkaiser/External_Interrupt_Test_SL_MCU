@@ -112,22 +112,29 @@ void configure_i2c_slave_callbacks(void)
 void i2c_write_complete_callback(struct i2c_slave_module *const module)
 {
 	LED_Toggle(LED0);
-		
+	//Never happens
 }
 
 /**********************************************************************
  * @fn					- i2c_read_complete_callback
  * @brief				- i2c SLAVE read complete triggers this callback
+ *							
  *
  * @param[in]			- struct i2c_slave_module
  * @param[in]			- *const module
  * @return				- void
  *
  * @note				- MASTER: i2c_write, SLAVE: read-into-buf Complete
+ *						This is also triggered for master-write-addr prior to read
  **********************************************************************/
 void i2c_read_complete_callback(struct i2c_slave_module *const module)
 {
 	LED_Toggle(LED0);
+	if (cmd_sent.cmdID != 0)
+	{
+		//If new data, set flag to process data.
+		flgcmdRx = TRUE;			
+	}
 
 }
 
@@ -179,6 +186,7 @@ void i2c_write_request_callback(struct i2c_slave_module *const module)
 	if (i2c_slave_read_packet_job(module, &rw_packet) != STATUS_OK)
 	{
 	}
+
 }
 
 

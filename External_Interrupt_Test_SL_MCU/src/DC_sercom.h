@@ -19,6 +19,7 @@
 	
 	};
 	struct cmd_issued cmd_sent;
+	struct cmd_issued cmd_processed;
 
 	struct cmd_response
 	{
@@ -49,7 +50,7 @@
 struct cmd_response cmd_resp;
 struct cmd_response cmd_resp_copy;
 
-//BOOL flgcmdRx;		//Flag for command received 
+BOOL flgcmdRx;		//Flag for command received 
 
 /******************* Prototypes *******************/
 
@@ -61,7 +62,5 @@ void i2c_read_request_callback(	struct i2c_slave_module *const module);
 void i2c_write_request_callback( struct i2c_slave_module *const module);
 
 void sys_config(void);
-
-//void setFlag(void);
 
 #endif /* DC_SERCOM_H_ */

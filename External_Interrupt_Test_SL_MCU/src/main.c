@@ -42,6 +42,36 @@ int main (void)
 	
 	while(1)
 	{
+		/* Process new Data */
+		if(flgcmdRx == TRUE)
+		{
+			//Reset Flag
+			flgcmdRx = FALSE;	
+
+			//copy command struct
+			cmd_processed = cmd_sent;
+			
+			//clear cmd_sent buf
+			cmd_sent.cmdID = 0;
+			cmd_sent.encLocMoveTo = 0;
+
+			port_pin_toggle_output_level(STATUSLED);
+			
+			switch(cmd_processed.cmdID)
+			{
+				case 0xFF:
+					motorCW(50);
+					break;
+
+				case 0xAA:
+					motorCCW(50);
+					break;
+				
+				default:
+					break;
+			}
+			
+		}
 
 		//if( port_pin_get_input_level(BUTTON_0_PIN) == SW0_ACTIVE )
 		if( port_pin_get_input_level(PBTN) == HIGH )

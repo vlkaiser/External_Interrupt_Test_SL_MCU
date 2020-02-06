@@ -49,6 +49,7 @@
 struct cmd_response cmd_resp;
 struct cmd_response cmd_resp_copy;
 
+//BOOL flgcmdRx;		//Flag for command received 
 
 /******************* Prototypes *******************/
 

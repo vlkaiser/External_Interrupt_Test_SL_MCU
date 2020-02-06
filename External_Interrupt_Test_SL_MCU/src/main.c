@@ -49,7 +49,7 @@ int main (void)
 			//port_pin_toggle_output_level(LED0);
 			port_pin_toggle_output_level(STATUSLED);
 			//delay_ms(100);
-			motorCCW(5);
+			motorCW(500);
 		}
 		else
 		{

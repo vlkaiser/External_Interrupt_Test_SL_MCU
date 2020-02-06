@@ -24,14 +24,19 @@
 		pin_conf.input_pull = PORT_PIN_PULL_NONE;
 		port_pin_set_config(DIR_PIN, &pin_conf);
 		port_pin_set_config(PLS_PIN, &pin_conf);
+
+		pin_conf.input_pull = PORT_PIN_PULL_DOWN;
 		port_pin_set_config(STATUSLED, &pin_conf);
 		
 		pin_conf.direction  = PORT_PIN_DIR_INPUT;
-		port_pin_set_config(PBTN, &pin_conf);
-		
 		pin_conf.input_pull = PORT_PIN_PULL_UP;
 		port_pin_set_config(CHA_ENC, &pin_conf);
 		port_pin_set_config(CHB_ENC, &pin_conf);
+
+		pin_conf.direction  = PORT_PIN_DIR_INPUT;
+		pin_conf.input_pull = PORT_PIN_PULL_DOWN;
+		port_pin_set_config(PBTN, &pin_conf);
+
 	#endif
 
 	port_pin_set_output_level(DIR_PIN, LOW);
@@ -50,12 +55,12 @@
  void motorCCW(int NumSpeed)
  {
 
-	port_pin_set_output_level(DIR_PIN, HIGH);
+	port_pin_set_output_level(DIR_PIN, LOW);
 	delay_ms(NumSpeed);
 	port_pin_set_output_level(PLS_PIN, LOW);
 	delay_ms(NumSpeed);
 	port_pin_set_output_level(PLS_PIN, HIGH);
-	delay_ms(NumSpeed);
+	delay_ms(NumSpeed+3);
 	/*
 	port_pin_set_output_level(DIR_PIN, LOW);
 	delay_ms(NumSpeed);
@@ -77,10 +82,14 @@
  ******************************************************************************************************/
  void motorCW(int NumSpeed)
  {
-	port_pin_set_output_level(DIR_PIN, HIGH);
-	delay_ms(NumSpeed);
-	port_pin_set_output_level(PLS_PIN, HIGH);
-	delay_ms(NumSpeed);
-	port_pin_set_output_level(PLS_PIN, LOW);
-	delay_ms(NumSpeed);
+	for(int i = 0; i < NumSpeed; i++)
+	{
+		port_pin_set_output_level(DIR_PIN, HIGH);
+		delay_ms(10);
+		port_pin_set_output_level(PLS_PIN, LOW);
+		delay_ms(10);
+		port_pin_set_output_level(PLS_PIN, HIGH);
+		delay_ms(10);
+		}
+
  }

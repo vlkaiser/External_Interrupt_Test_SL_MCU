@@ -1,4 +1,4 @@
-src/DC_sercom.d src/DC_sercom.o: ../src/DC_sercom.c ../src/DC_sercom.h \
+src/DC_Motors.d src/DC_Motors.o: ../src/DC_Motors.c ../src/DC_Motors.h \
  ../src/main.h ../src/asf.h ../src/ASF/sam0/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
  ../src/ASF/common/utils/parts.h ../src/ASF/sam0/utils/status_codes.h \
@@ -120,12 +120,12 @@ src/DC_sercom.d src/DC_sercom.o: ../src/DC_sercom.c ../src/DC_sercom.h \
  ../src/ASF/sam0/drivers/sercom/i2c/i2c_common.h \
  ../src/ASF/sam0/drivers/sercom/i2c/i2c_slave_interrupt.h \
  ../src/ASF/sam0/drivers/sercom/i2c/i2c_slave.h ../src/DC_TypeDefs.h \
+ ../src/DC_sercom.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
- ../src/DC_Motors.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h
 
-../src/DC_sercom.h:
+../src/DC_Motors.h:
 
 ../src/main.h:
 
@@ -381,10 +381,10 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 
 ../src/DC_TypeDefs.h:
 
+../src/DC_sercom.h:
+
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:
-
-../src/DC_Motors.h:

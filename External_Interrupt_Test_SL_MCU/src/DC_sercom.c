@@ -205,7 +205,7 @@ void sys_config(void)
 
 		cmd_resp.lastCmdRxd = 0x11;
 		cmd_resp.lastCmdStatus = 0x22;
-		cmd_resp.ID = 0x33;
+		cmd_resp.ID = I2C_SLAVE_ADDRESS;
 		cmd_resp.config = 0x44;
 		cmd_resp.status = 0x55;
 		cmd_resp.motorStatus = 0x66;

@@ -47,6 +47,15 @@ int main (void)
 		{
 			//Reset Flag
 			flgcmdRx = FALSE;	
+			
+			//TODO: Either set cmd_resp and reply as MS Polls for i2cread, 
+			// Or setup GPIO between MS/SL to indicate dataReady
+			cmd_resp.encoderLoc = 0;
+			cmd_resp.lastCmdStatus = 0;
+			cmd_resp.config = 0;
+			cmd_resp.motorStatus = 0;
+			cmd_resp.status = dWAIT;
+
 
 			//copy command struct
 			cmd_processed = cmd_sent;
@@ -59,14 +68,31 @@ int main (void)
 			
 			switch(cmd_processed.cmdID)
 			{
-				case 0xFF:
+				case PWR_UP:	
 					motorCW(50);
+					cmd_resp.status = dRDY;
+					cmd_resp.encoderLoc = endPwrUp;
 					break;
 
-				case 0xAA:
+				case PWR_DWN:
+					motorCW(50);
+					break;
+					cmd_resp.status = dRDY;
+					cmd_resp.encoderLoc = endPwrDown;			
+				case MEAS_ST:
 					motorCCW(50);
+					cmd_resp.status = dRDY;
+					cmd_resp.encoderLoc = endMeas;
 					break;
 				
+				case ESTP:
+					port_pin_set_output_level(STATUSLED, HIGH);
+					delay_ms(500);
+					port_pin_set_output_level(STATUSLED, LOW);
+					cmd_resp.status = dRDY;
+					cmd_resp.encoderLoc = endESTOP;
+					break;
+
 				default:
 					break;
 			}

@@ -15,5 +15,6 @@ void configMotors(void);
 void motorCW(int NumSpeed);
 void motorCCW(int NumSpeed);
 
+void motorHOME(void);
 
 #endif /* DC_MOTORS_H_ */

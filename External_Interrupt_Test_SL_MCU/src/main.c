@@ -38,8 +38,19 @@ int main (void)
 {
 	system_init();
 	sys_config();
+	//config_whoami(); - sysconfig
 	configMotors();
 	
+		//TODO: TEST cmd_response values
+		cmd_resp.lastCmdRxd = 0x11;
+		cmd_resp.lastCmdStatus = 0x22;
+		//cmd_resp.ID = I2C_SL_ADDR_X;
+		cmd_resp.config = 0x44;
+		cmd_resp.status = 0x55;
+		cmd_resp.motorStatus = 0x66;
+		cmd_resp.encoderLoc= 0xAABBCCDD;
+
+
 	while(1)
 	{
 		/* Process new Data */
@@ -48,14 +59,13 @@ int main (void)
 			//Reset Flag
 			flgcmdRx = FALSE;	
 			
-			//TODO: Either set cmd_resp and reply as MS Polls for i2cread, 
+			// TODO: Either set cmd_resp and reply as MS Polls for i2cread, 
 			// Or setup GPIO between MS/SL to indicate dataReady
 			cmd_resp.encoderLoc = 0;
 			cmd_resp.lastCmdStatus = 0;
 			cmd_resp.config = 0;
 			cmd_resp.motorStatus = 0;
 			cmd_resp.status = dWAIT;
-
 
 			//copy command struct
 			cmd_processed = cmd_sent;
@@ -66,6 +76,7 @@ int main (void)
 
 			port_pin_toggle_output_level(STATUSLED);
 			
+			// Switch Case for Motor drivers
 			switch(cmd_processed.cmdID)
 			{
 				case PWR_UP:	
@@ -78,7 +89,9 @@ int main (void)
 					motorCW(50);
 					break;
 					cmd_resp.status = dRDY;
-					cmd_resp.encoderLoc = endPwrDown;			
+					cmd_resp.encoderLoc = endPwrDown;		
+					break;
+						
 				case MEAS_ST:
 					motorCCW(50);
 					cmd_resp.status = dRDY;
@@ -99,6 +112,8 @@ int main (void)
 			
 		}
 
+		#ifdef XPLAINED_PRO
+
 		//if( port_pin_get_input_level(BUTTON_0_PIN) == SW0_ACTIVE )
 		if( port_pin_get_input_level(PBTN) == HIGH )
 		{
@@ -115,6 +130,7 @@ int main (void)
 			port_pin_set_output_level(DIR_PIN, LOW);
 			port_pin_set_output_level(PLS_PIN, LOW);
 		}
+		#endif
 		
 	}
 	

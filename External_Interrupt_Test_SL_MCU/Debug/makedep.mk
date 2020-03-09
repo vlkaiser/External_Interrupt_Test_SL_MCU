@@ -2,11 +2,17 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\sam0\drivers\extint\extint_callback.c
+
+src\ASF\sam0\drivers\extint\extint_sam_d_r_h\extint.c
+
 src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_slave.c
 
 src\ASF\sam0\drivers\sercom\i2c\i2c_samd20\i2c_slave_interrupt.c
 
 src\DC_Motors.c
+
+src\DC_peripherals.c
 
 src\DC_sercom.c
 

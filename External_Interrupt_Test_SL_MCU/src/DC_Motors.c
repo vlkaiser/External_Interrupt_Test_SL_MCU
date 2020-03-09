@@ -16,8 +16,9 @@
  ******************************************************************************************************/
  void configMotors(void)
  {
-	struct port_config pin_conf;
+ 	struct port_config pin_conf;
 	port_get_config_defaults(&pin_conf);
+	/* TODO: ConfigMotors for Motor Conotrol Board */
 
 	#ifdef XPLAINED_PRO
 		pin_conf.direction  = PORT_PIN_DIR_OUTPUT;
@@ -39,6 +40,7 @@
 
 	#endif
 
+	//TODO: Expand Daughter Card Motor Config
 	port_pin_set_output_level(DIR_PIN, LOW);
 	port_pin_set_output_level(PLS_PIN, LOW);
 
@@ -89,3 +91,19 @@
 		}
 
  }
+
+  /******************************************************************************************************
+ * @fn					- motorHOME()
+ * @brief				- 
+ * @param[in]			- 
+ * @return				- void
+ *
+ * @note				- Turn motor until external interrupt of limit switch.  Stop.  Turn motor opposite (small offset rotation) save offset.  send command message.
+ ******************************************************************************************************/
+ void motorHOME()
+ {
+	motorCW(500);
+
+
+ }
+

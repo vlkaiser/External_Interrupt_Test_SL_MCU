@@ -30,10 +30,12 @@
 /***** Command ID Abstractions *****/
 
 // Commands Sent: cmdID
-#define PWR_UP		0xAA
-#define PWR_DWN		0x66
-#define MEAS_ST		0x10
-#define ESTP		0xFF
+#define PWR_UP		0x55		//Power Up: Find HOME
+#define PWR_DWN		0x66		//Power Down: GoTo HOME
+#define ESTP		0x86		//STOP As is (No Motion)
+#define CURSTAT		0x99		//Report Status (No Motion)			
+/* TODO: MEAS_ST will initiate a sequence, probably loaded by the SMARC */
+#define MEAS_ST		0xA0		//Start Meas Sequence
 
 // Commands Sent: encLocMoveTo //
 #define posHome		0xACCE55ED
@@ -45,17 +47,13 @@
 //cmd Status
 #define dWAIT		0xBE
 #define dRDY		0x60
+#define dERR		0xD0
 
 //cmd encoderloc
 #define endPwrUp	0x1D1D1700
 #define endPwrDown	0x11223344
 #define endMeas		0x88AA88EE
 #define endESTOP	0xDEADDEAD	
-
-// ID
-#define		motorX		0xA1
-#define		motorY		0xB1
-#define		motorZ		0xC1
 
 
 #endif /* DC_TYPEDEFS_H_ */

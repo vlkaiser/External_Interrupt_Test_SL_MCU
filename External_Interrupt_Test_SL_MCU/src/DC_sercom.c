@@ -10,11 +10,13 @@
   * Global Variables
   */
 #define MAX_RX_BUFFER_LENGTH	256
-#define I2C_SLAVE_ADDRESS		0x18
+
 #define I2C_TIMEOUT				10
 
 #define CONF_I2C_SLAVE_MODULE   SERCOM2		//SERCOM port
 //#define SLAVE_ADDRESS 0x12
+
+
 
 struct i2c_slave_module i2c_slave_instance;
 struct i2c_slave_config config_i2c_slave;
@@ -34,19 +36,6 @@ static uint8_t read_buffer [DATA_LENGTH];
  /* Timeout counter. */
  uint16_t timeout = 0;
 
-/******************************************************************************************************
- * @fn					- SysTick_Handler
- * @brief				- SysTick handler interrupt override
- * @param[in]			- void
- * @return				- void
- *
- * @note				- 
- ******************************************************************************************************/
-void SysTick_Handler(void)
-{
-	// Your code goes here
-}
-
 /**********************************************************************
  * @fn					- configure_i2c_slave
  * @brief				- Initialize config structure and module instance
@@ -62,7 +51,7 @@ void configure_i2c_slave(void)
 	i2c_slave_get_config_defaults(&config_i2c_slave);
 
 	/* Change address and address_mode */
-	config_i2c_slave.address      = I2C_SLAVE_ADDRESS;
+	config_i2c_slave.address      = cmd_resp.ID;
 	config_i2c_slave.address_mode = I2C_SLAVE_ADDRESS_MODE_MASK;
 
 	/* Initialize and enable device with config */
@@ -188,27 +177,3 @@ void i2c_write_request_callback(struct i2c_slave_module *const module)
 }
 
 
- /******************************************************************************************************
- * @fn					- sys_config
- * @brief				- Calls all the config functions (called from main.c)
- * @param[in]			- void
- * @return				- void
- *
- * @note				- 
- ******************************************************************************************************/
-void sys_config(void)
-{
-	SysTick_Config(system_gclk_gen_get_hz(GCLK_GENERATOR_0));
-
-	configure_i2c_slave();
-	configure_i2c_slave_callbacks();
-
-		cmd_resp.lastCmdRxd = 0x11;
-		cmd_resp.lastCmdStatus = 0x22;
-		cmd_resp.ID = I2C_SLAVE_ADDRESS;
-		cmd_resp.config = 0x44;
-		cmd_resp.status = 0x55;
-		cmd_resp.motorStatus = 0x66;
-		cmd_resp.encoderLoc= 0xAABBCCDD;
-
-}

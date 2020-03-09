@@ -36,8 +36,8 @@ void system_board_init(void);
 //changed for this
 #define BOARD_NAME                "SAMD20_XPLAINED_PRO"
 
-//#define ROBOT_SCAN	1
-#define XPLAINED_PRO	1
+#define ROBOT_SCAN	1
+//#define XPLAINED_PRO	1
 
 #ifdef ROBOT_SCAN
 	/** \name Resonator definitions *  @{ */
@@ -55,9 +55,39 @@ void system_board_init(void);
 
 
 	/** Number of on-board LEDs */
+	#define LED_COUNT                 2
+	
+	#define LED0_PIN                  PIN_PA21
+	#define LED0_ACTIVE               false
+	#define LED0_INACTIVE             !LED0_ACTIVE
+
 	//Status LED GN/OR
-	#define LED_COUNT                 1
-	#define LED0 LED0_PIN
+	#define STATUSLED					PIN_PA20
+	#define LED0						LED0_PIN	
+
+	//I2C STRAP PINS
+	#define I2C_STRAP_0					PIN_PA27	//Pin 51
+	#define I2C_STRAP_1					PIN_PB23	//Pin 50
+
+	/* Motor Defines - Test */
+	#define DIR_PIN						PIN_PB00
+	#define	PLS_PIN						PIN_PB01
+	#define	CHA_ENC						PIN_PB02
+	#define	CHB_ENC						PIN_PB03
+	#define PBTN						PIN_PA18
+
+	#define LIMIT_SW_PIN				PIN_PB09
+	#define LIMIT_SW_EIC_PIN			PIN_PB09A_EIC_EXTINT9
+	#define LIMIT_SW_EIC_MUX			MUX_PB09A_EIC_EXTINT9
+	#define LIMIT_SW_EIC_PINMUX			PINMUX_PB09A_EIC_EXTINT9
+	#define LIMIT_SW_EIC_LINE			9
+	/* @ */
+	#define SW_LIMIT_PIN				LIMIT_SW_PIN
+	#define SW_LIMIT_EIC_PIN			LIMIT_SW_EIC_PIN
+	#define SW_LIMIT_EIC_MUX			LIMIT_SW_EIC_MUX
+	#define SW_LIMIT_EIC_PINMUX			LIMIT_SW_EIC_PINMUX
+	#define SW_LIMIT_EIC_LINE			LIMIT_SW_EIC_LINE	
+
 
 #endif
 
